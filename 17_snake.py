@@ -1,4 +1,12 @@
 import pygame
+import random
+
+def random_location():
+    global SCREEN_SIZE, FOOD_LOCATION
+    FOOG_LOCATION = (
+        random.randint(0, SCREEN_SIZE[0]/10),
+        random.randint(0, SCREEN_SIZE[1]/10)
+    )
 
 # RGB (Red, Green, Blue)
 BLUE = (0, 0, 255)
@@ -14,13 +22,15 @@ pygame.display.set_caption("Snake")
 
 clock = pygame.time.Clock()
 
-
+# aktualna pozycja weza
 snake_x = 400
 snake_y = 300
 
+# predkosc przesuwania
 vx = 10
 vy = 0
 
+FOOD_LOCATION = None
 
 while True:
     for event in pygame.event.get():
@@ -42,7 +52,8 @@ while True:
                vx = 0
                vy = 10
 
-
+    if FOOD_LOCATION is None:
+        FOOD_LOCATION = random_location()
 
     snake_x += vx
     snake_y += vy
