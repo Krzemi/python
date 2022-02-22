@@ -44,6 +44,20 @@ while True:
     snake_x += vx
     snake_y += vy
 
+    WIDTH, HEIGHT = SCREEN_SIZE
+    if snake_x >= WIDTH:
+        snake_x = 0
+    elif snake_x < 0:
+        snake_x = WIDTH - 10
+    
+    
+    if snake_y >= HEIGHT:
+        snake_y = 0
+    elif snake_y < 0:
+        snake_y = HEIGHT - 10
+
+
+
     SCREEN.fill(BLACK)
     pygame.draw.rect(
         SCREEN, WHITE, [snake_x, snake_y, 10, 10]
