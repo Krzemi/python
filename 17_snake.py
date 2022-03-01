@@ -3,9 +3,9 @@ import random
 
 def random_location():
     global SCREEN_SIZE, FOOD_LOCATION
-    FOOG_LOCATION = (
-        random.randint(0, SCREEN_SIZE[0]/10),
-        random.randint(0, SCREEN_SIZE[1]/10)
+    return (
+        random.randint(0, SCREEN_SIZE[0]/10 * 10),
+        random.randint(0, SCREEN_SIZE[1]/10 * 10)
     )
 
 # RGB (Red, Green, Blue)
@@ -25,6 +25,8 @@ clock = pygame.time.Clock()
 # aktualna pozycja weza
 snake_x = 400
 snake_y = 300
+
+segments = [(snake_x, snake_y)]
 
 # predkosc przesuwania
 vx = 10
@@ -52,9 +54,6 @@ while True:
                vx = 0
                vy = 10
 
-    if FOOD_LOCATION is None:
-        FOOD_LOCATION = random_location()
-
     snake_x += vx
     snake_y += vy
 
@@ -67,10 +66,25 @@ while True:
         snake_y = 0
     elif snake_y < 0:
         snake_y = HEIGHT - 10
+
+    segments.insert(0, (snake_x, snake_y))
+        
     
+    if (FOOD_LOCATION
+        and snake_x == FOOD_LOCATION[2]
+        and snake_y == FOOD_LOCATION[1]):
+        FOOD_LOCATION = None
+
+    if FOOD_LOCATION is None:
+        FOOD_LOCATION = random_location()
+
 
     SCREEN.fill(BLACK)
-    pygame.draw.rect(SCREEN ,WHITE, [snake_x, snake_y, 10, 10])
+    for x, y in segments:
+        pygame.draw.rect(
+            SCREEN ,WHITE, [snake_x, snake_y, 10, 10])
+    pygame.draw.rect(
+        SCREEN, RED, [FOOD_LOCATION[0], FOOD_LOCATION[1], 10, 10])
 
     pygame.display.update()
-    clock.tick(60) 
+    clock.tick(30)
