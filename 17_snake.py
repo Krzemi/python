@@ -63,12 +63,38 @@ while True:
                 segments = [segments[0]]
 
     if game_over:
-        SCREEN.fill(BLACK)
-        tekst_koniec = czcionka60.render(f'Twój wynik: {len(segments) - 1}', False, WHITE)
-        tekst_reset = czcionka60.render('Wciśnij ENTER, aby zagrać ponownie', False, WHITE)
-
-        SCREEN.blit(tekst_koniec, (10, 10))
-        SCREEN.blit(tekst_reset, (10, 80))
+        if len(segments) < 25:
+            SCREEN.fill(BLACK)
+            tekst_koniec = czcionka60.render(f'Twój wynik: {len(segments) - 1}', False, WHITE)
+            tekst_komentarz = czcionka60.render('essa z toba kidosku hihihiha', False, WHITE)
+            tekst_reset = czcionka60.render('Wcisnij ENTER, aby zagrac ponownie', False, WHITE)
+            SCREEN.blit(tekst_koniec, (10, 10))
+            SCREEN.blit(tekst_komentarz, (10, 80))
+            SCREEN.blit(tekst_reset, (10, 150))
+        elif len(segments) > 25 and len(segments) < 50:
+            SCREEN.fill(BLACK)
+            tekst_koniec = czcionka60.render(f'Twój wynik: {len(segments) - 1}, ', False, WHITE)
+            tekst_komentarz = czcionka60.render('mogles sie bardziej postarac:/', False, WHITE)
+            tekst_reset = czcionka60.render('Wcisnij ENTER, aby zagrac ponownie', False, WHITE)
+            SCREEN.blit(tekst_koniec, (10, 10))
+            SCREEN.blit(tekst_komentarz, (10, 80))
+            SCREEN.blit(tekst_reset, (10, 150))
+        elif len(segments) < 50 len(segments) < 100:
+            SCREEN.fill(BLACK)
+            tekst_koniec = czcionka60.render(f'Twój wynik: {len(segments) - 1}, ', False, WHITE)
+            tekst_komentarz = czcionka60.render('nie bylo zle :) :p', False, WHITE)
+            tekst_reset = czcionka60.render('Wcisnij ENTER, aby zagrac ponownie', False, WHITE)
+            SCREEN.blit(tekst_koniec, (10, 10))
+            SCREEN.blit(tekst_komentarz, (10, 80))
+            SCREEN.blit(tekst_reset, (10, 150))
+        elif len(segments) > 100:
+            SCREEN.fill(BLACK)
+            tekst_koniec = czcionka60.render(f'Twój wynik: {len(segments) - 1}, ', False, WHITE)
+            tekst_komentarz = czcionka60.render('chcialo ci sie?, no ok, brawo!', False, WHITE)
+            tekst_reset = czcionka60.render('Wcisnij ENTER, aby zagrac ponownie', False, WHITE)
+            SCREEN.blit(tekst_koniec, (10, 10))
+            SCREEN.blit(tekst_komentarz, (10, 80))
+            SCREEN.blit(tekst_reset, (10, 150))
     else:
 
         snake_x += vx
