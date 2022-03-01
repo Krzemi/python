@@ -79,7 +79,7 @@ while True:
             SCREEN.blit(tekst_koniec, (10, 10))
             SCREEN.blit(tekst_komentarz, (10, 80))
             SCREEN.blit(tekst_reset, (10, 150))
-        elif len(segments) < 50 len(segments) < 100:
+        elif len(segments) < 50 and len(segments) < 100:
             SCREEN.fill(BLACK)
             tekst_koniec = czcionka60.render(f'Twój wynik: {len(segments) - 1}, ', False, WHITE)
             tekst_komentarz = czcionka60.render('nie bylo zle :) :p', False, WHITE)
